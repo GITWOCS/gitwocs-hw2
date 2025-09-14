@@ -46,7 +46,7 @@ def number_to_base64(number):
     """Convert integer to base64"""
     try:
         # Convert integer to bytes, then encode to base64
-        byte_count = (number.bit_length() + 7) // 8
+        byte_count = max(1, (number.bit_length() + 7) // 8)
         number_bytes = number.to_bytes(byte_count, byteorder='little')
         return base64.b64encode(number_bytes).decode('utf-8')
     except:
